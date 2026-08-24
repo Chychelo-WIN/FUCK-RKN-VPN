@@ -28,7 +28,7 @@
 | Версия | Файл | Ссылка (RAW) |
 |--------|------|--------------|
 | **Mobile** (ТОП‑150, микс протоколов) | `mobile.txt` | (https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/output/mobile.txt) |
-| **PC** (полный список) | `pc.txt` | (https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/output/pc.txt) |
+| **PC** (полный список) | `pc.txt` | ((https://raw.githubusercontent.com/Chychelo-WIN/FUCK-RKN-VPN/tree/main/output/pc.txt) |
 
 > Все конфигурации взяты из оригинального репозитория и обновляются зависимости от того когда обновляются оригинальные файлы.  
 > Подписки обновляются автоматически **каждый час** – просто включите автообновление в своём клиенте.
