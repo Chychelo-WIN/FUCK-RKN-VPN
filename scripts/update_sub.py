@@ -50,8 +50,10 @@ def deduplicate(lines):
             result.append(line)
     return result
 
-def make_base64(links):
-    content = "\n".join(links)
+def make_base64(links, title):
+    # Добавляем строку profile-title в начало
+    header = f"# profile-title: {title}\n"
+    content = header + "\n".join(links)
     return base64.b64encode(content.encode()).decode()
 
 def main():
