@@ -16,7 +16,7 @@
 
 # <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2RkeXZzdDl1Y3g4dW1xcjFxc2xsMHVsZ2RiY243OHJodjd0cHQ1NSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/qXp82ZL3eZbbTUrLyy/giphy.gif" width="45"> Free VPN subscription for Russia
 
-**FUCK‑RKN‑VPN** – my own subscription based on free servers from the repository [igareck/vpn‑configs‑for‑russia](https://github.com/igareck/vpn-configs-for-russia).  
+**FUCK‑RKN‑VPN** – my own subscription based on free servers from the repository [igareck/vpn‑configs‑for‑russia](https://github.com/igareck/vpn-configs-for-russia).  Author: igareck
 
 All configs are public, auto‑updated, and automatically tested for usability.  
 **Subscriptions are refreshed every hour** – you always have the latest list of working servers without junk.
@@ -94,6 +94,13 @@ General steps for all clients:
 - **Habr vulnerability article:** [link](https://habr.com/ru/articles/1020080/) (archive mirror available)
 
 ---
+
+## 📜 License
+
+This project is licensed under the **GNU General Public License v3.0**.  
+For full details, see or visit the official site: [https://www.gnu.org/licenses/gpl-3.0.html](https://www.gnu.org/licenses/gpl-3.0.html).
+
+In short: you are free to use, modify, and distribute this code as long as all derivative works are also distributed under the same license with proper attribution.
 
 ## ⚠️ Disclaimer
 
