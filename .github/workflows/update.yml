@@ -1,0 +1,31 @@
+name: Update VPN subscription
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'   # каждые 15 минут
+  workflow_dispatch:          # ручной запуск
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run update script
+        run: python scripts/update_sub.py
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add output/
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update subscription $(date -u +%Y-%m-%dT%H:%M:%SZ)" && git push)
