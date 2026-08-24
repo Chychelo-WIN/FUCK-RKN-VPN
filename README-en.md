@@ -2,6 +2,7 @@
 <div align="center">
   <a href="./README.md"><img src="https://img.shields.io/badge/Русский-README.md-blue?style=for-the-badge&logo=googletranslate&logoColor=white" alt="Russian"></a>
   <a href="./README-en.md"><img src="https://img.shields.io/badge/English-README--en.md-red?style=for-the-badge&logo=googletranslate&logoColor=white" alt="English"></a>
+  [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 </div>
 
 <br>
