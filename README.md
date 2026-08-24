@@ -1,13 +1,14 @@
 <!-- Переключатель языков -->
 <div align="center">
-  <a href="README-ru.md"><img src="https://img.shields.io/badge/Русский-README--ru.md-blue?style=for-the-badge&logo=googletranslate&logoColor=white" alt="Русский"></a>
+  <a href="README.md"><img src="https://img.shields.io/badge/Русский-README.md-blue?style=for-the-badge&logo=googletranslate&logoColor=white" alt="Русский"></a>
   <a href="README-en.md"><img src="https://img.shields.io/badge/English-README--en.md-red?style=for-the-badge&logo=googletranslate&logoColor=white" alt="English"></a>
 </div>
 
 <br>
 
 <div align="center">
-  <img src="https://i.imgur.com/OrVp5Rx.jpeg" alt="Star Sky" width="600"/>
+  <!-- Замени ссылку на свою картинку, если нужно -->
+  <img src="https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Star Sky" width="600"/>
   <h1>🌟 FUCK-RKN-VPN 🌟</h1>
   <p><strong>Обходим блокировки вместе 🚀</strong></p>
   <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNTljeGk4d3lzZnU3Mm1peDBienFpbmEyb3JmaDB5N21tMW9oczIwdyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/8p1WPEOeDWFCksfe18/giphy.gif" width="150" alt="NyaCat"/>
@@ -26,19 +27,12 @@
 
 ## 📦 Подписки
 
-### ⚫ Чёрный список (стандартный интернет)
 | Версия | Файл | Ссылка (RAW) |
 |--------|------|--------------|
-| **Mobile** (ТОП‑150, микс протоколов) | `BLACK_VLESS_RUS_mobile.txt` | [Скачать](https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/BLACK_VLESS_RUS_mobile.txt) |
-| **PC** (полный VLESS) | `BLACK_VLESS_RUS.txt` | [Скачать](https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/BLACK_VLESS_RUS.txt) |
+| **Mobile** (ТОП‑150, микс протоколов) | `mobile.txt` | (https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/output/mobile.txt) |
+| **PC** (полный список) | `pc.txt` | (https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/output/pc.txt) |
 
-### ⚪ Белый список (жёсткие CIDR‑ограничения)
-| Версия | Файл | Ссылка (RAW) |
-|--------|------|--------------|
-| **Mobile** (ТОП‑150 CIDR) | `Vless-Reality-White-Lists-Rus-Mobile.txt` | [Скачать](https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/Vless-Reality-White-Lists-Rus-Mobile.txt) |
-| **PC** (полный CIDR‑список) | `WHITE-CIDR-RU-all.txt` | [Скачать](https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/WHITE-CIDR-RU-all.txt) |
-
-> Все конфигурации взяты из оригинального репозитория и проходят регулярное тестирование.  
+> Все конфигурации взяты из оригинального репозитория и обновляются в зависимости от обновления исходных файлов.  
 > Подписки обновляются автоматически **каждый час** – просто включите автообновление в своём клиенте.
 
 ---
