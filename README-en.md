@@ -27,8 +27,8 @@ All configs are public, auto‑updated, and automatically tested for usability.
 
 | Version | File | RAW Link |
 |---------|------|----------|
-| **Mobile** (Top‑150, mix of protocols) | `mobile.txt` | ((https://raw.githubusercontent.com/Chychelo-WIN/FUCK-RKN-VPN/tree/main/output/mobile.txt) |
-| **PC** (full list) | `pc.txt` | (https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/output/pc.txt) |
+| **Mobile** (Top‑150, mix of protocols) | `mobile.txt` | (https://raw.githubusercontent.com/Chychelo-WIN/FUCK-RKN-VPN/main/output/mobile.txt) |
+| **PC** (full list) | `pc.txt` | (https://raw.githubusercontent.com/Chychelo-WIN/FUCK-RKN-VPN/main/output/pc.txt) |
 
 > All configs are taken from the original repository Dependencies are updated based on when the original files are updated.  
 > Subscriptions update automatically **every hour** – just enable auto‑update in your client.
