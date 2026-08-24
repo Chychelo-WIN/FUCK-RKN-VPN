@@ -64,7 +64,7 @@ def main():
         pc_links.extend(fetch_lines(url))
     pc_links = deduplicate(pc_links)
     print(f"Всего PC уникальных ссылок: {len(pc_links)}")
-    pc_b64 = make_base64(pc_links)
+    pc_b64 = make_base64(pc_links, "FUCK-RKN-VPN PC")
     (OUTPUT_DIR / "pc.txt").write_text(pc_b64)
 
     # Mobile
@@ -74,7 +74,7 @@ def main():
         mobile_links.extend(fetch_lines(url))
     mobile_links = deduplicate(mobile_links)
     print(f"Всего Mobile уникальных ссылок: {len(mobile_links)}")
-    mobile_b64 = make_base64(mobile_links)
+    mobile_b64 = make_base64(mobile_links, "FUCK-RKN-VPN Mobile")
     (OUTPUT_DIR / "mobile.txt").write_text(mobile_b64)
 
     print("\nГотово! Файлы output/pc.txt и output/mobile.txt обновлены.")
