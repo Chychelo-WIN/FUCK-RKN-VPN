@@ -16,7 +16,7 @@
 
 # <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2RkeXZzdDl1Y3g4dW1xcjFxc2xsMHVsZ2RiY243OHJodjd0cHQ1NSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/qXp82ZL3eZbbTUrLyy/giphy.gif" width="45"> Бесплатная VPN Подписка Для РФ
 
-**FUCK‑RKN‑VPN** – моя собственная подписка на основе бесплатных серверов из репозитория [igareck/vpn‑configs‑for‑russia](https://github.com/igareck/vpn-configs-for-russia).  
+**FUCK‑RKN‑VPN** – моя собственная подписка на основе бесплатных серверов из репозитория [igareck/vpn‑configs‑for‑russia](https://github.com/igareck/vpn-configs-for-russia).  Автор: igareck
 
 Все конфигурации публичные, автообновляемые и проходят автоматическую проверку на работоспособность.  
 **Подписки обновляются каждый час** – вы всегда имеете свежий список работающих серверов без мусора.
@@ -94,6 +94,13 @@
 - **Статья об уязвимости на Habr:** [ссылка](https://habr.com/ru/articles/1020080/) (зеркало в архиве)
 
 ---
+
+## 📜 Лицензия
+
+Этот проект распространяется под лицензией **GNU General Public License v3.0**.  
+Подробнее с условиями лицензии можно ознакомиться на официальном сайте: [https://www.gnu.org/licenses/gpl-3.0.html](https://www.gnu.org/licenses/gpl-3.0.html).
+
+Кратко: вы можете свободно использовать, изменять и распространять этот код при условии, что все производные работы также будут распространяться под той же лицензией с указанием авторства.
 
 ## ⚠️ Дисклеймер
 
