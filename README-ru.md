@@ -1,0 +1,108 @@
+<!-- Переключатель языков -->
+<div align="center">
+  <a href="README-ru.md"><img src="https://img.shields.io/badge/Русский-README--ru.md-blue?style=for-the-badge&logo=googletranslate&logoColor=white" alt="Русский"></a>
+  <a href="README-en.md"><img src="https://img.shields.io/badge/English-README--en.md-red?style=for-the-badge&logo=googletranslate&logoColor=white" alt="English"></a>
+</div>
+
+<br>
+
+<div align="center">
+  <img src="https://i.imgur.com/OrVp5Rx.jpeg" alt="Star Sky" width="600"/>
+  <h1>🌟 FUCK-RKN-VPN 🌟</h1>
+  <p><strong>Обходим блокировки вместе 🚀</strong></p>
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNTljeGk4d3lzZnU3Mm1peDBienFpbmEyb3JmaDB5N21tMW9oczIwdyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/8p1WPEOeDWFCksfe18/giphy.gif" width="150" alt="NyaCat"/>
+</div>
+
+---
+
+# <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2RkeXZzdDl1Y3g4dW1xcjFxc2xsMHVsZ2RiY243OHJodjd0cHQ1NSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/qXp82ZL3eZbbTUrLyy/giphy.gif" width="45"> Бесплатные VPN‑конфигурации, работающие в РФ
+
+**FUCK‑RKN‑VPN** – моя собственная подписка на основе бесплатных серверов из репозитория [igareck/vpn‑configs‑for‑russia](https://github.com/igareck/vpn-configs-for-russia).  
+
+Все конфигурации публичные, автообновляемые и проходят автоматическую проверку на работоспособность.  
+**Подписки обновляются каждый час** – вы всегда имеете свежий список работающих серверов без мусора.
+
+---
+
+## 📦 Подписки
+
+### ⚫ Чёрный список (стандартный интернет)
+| Версия | Файл | Ссылка (RAW) |
+|--------|------|--------------|
+| **Mobile** (ТОП‑150, микс протоколов) | `BLACK_VLESS_RUS_mobile.txt` | [Скачать](https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/BLACK_VLESS_RUS_mobile.txt) |
+| **PC** (полный VLESS) | `BLACK_VLESS_RUS.txt` | [Скачать](https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/BLACK_VLESS_RUS.txt) |
+
+### ⚪ Белый список (жёсткие CIDR‑ограничения)
+| Версия | Файл | Ссылка (RAW) |
+|--------|------|--------------|
+| **Mobile** (ТОП‑150 CIDR) | `Vless-Reality-White-Lists-Rus-Mobile.txt` | [Скачать](https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/Vless-Reality-White-Lists-Rus-Mobile.txt) |
+| **PC** (полный CIDR‑список) | `WHITE-CIDR-RU-all.txt` | [Скачать](https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/WHITE-CIDR-RU-all.txt) |
+
+> Все конфигурации взяты из оригинального репозитория и проходят регулярное тестирование.  
+> Подписки обновляются автоматически **каждый час** – просто включите автообновление в своём клиенте.
+
+---
+
+## 🔒 Важно по безопасности
+
+На **Habr** вышла статья о критической уязвимости мобильных клиентов на базе xray/sing‑box: локальный SOCKS5‑прокси без авторизации может быть использован российскими приложениями для определения вашего реального IP.
+
+**Клиент Happ** – в обновлениях разработчик убрал HandlerService на Android и добавил авторизацию inbound (логин/пароль) на всех платформах.  
+**Это делает Happ безопасным при условии, что вы зададите логин и пароль в настройках.**  
+
+Рекомендуется использовать клиенты, которые поддерживают авторизацию локального прокси:
+- ✅ **Karing**, **Throne**, **v2rayNG**, **v2rayTun**, **Happ** – безопасны (нужна настройка логина/пароля).
+- ❌ **Streisand**, **NekoBox**, **V2Box** – пока не обновлены, используйте с осторожностью.
+
+**Практический совет:** если на устройстве установлены российские приложения (банки, Госуслуги, Яндекс и т.п.), используйте отдельный профиль Android или выделенное устройство для надёжной изоляции.
+
+---
+
+## 🧩 Инструкции для VPN‑клиентов
+
+Общий алгоритм для всех клиентов:
+1. Скопируйте RAW‑ссылку на нужную подписку (из таблицы выше).
+2. В клиенте добавьте новую подписку (обычно «Добавить профиль» → «Подписка»).
+3. Вставьте ссылку, задайте имя и интервал обновления (рекомендуется **1 час**).
+4. Обновите подписку и выполните проверку «реальной задержки» (не TCP/ICMP Ping).
+5. Выберите сервер с наименьшим пингом и подключитесь.
+
+### Краткие инструкции по клиентам
+
+#### 📱 Android
+- **v2rayNG** – «+» → «Подписка» → вставить URL → обновить → проверить задержку → подключиться. В настройках задайте логин/пароль локального прокси.
+- **NekoBox** – «+» → «Подписка» → вставить URL → сохранить → обновить → проверить задержку → подключиться.
+- **Hiddify** – «+» → «Добавить подписку» → вставить URL → добавить → обновить → проверить задержку → подключиться. В настройках включите авторизацию inbound.
+- **V2box** – «+» → «Подписка» → ввести URL → сохранить → обновить → проверить задержку → подключиться.
+- **Happ** – «+» → «Подписка» → вставить URL → обновить → проверить задержку → подключиться. В настройках задайте логин/пароль inbound.
+
+#### 🍎 iOS
+- **Shadowrocket** – «+» → «Subscribe» → вставить URL → Done → обновить → Test Latency → выбрать сервер → включить VPN.
+- **V2box** – аналогично, через «Subscribe».
+- **Happ** – аналогично Android.
+
+#### 💻 Windows / Linux / MacOS
+- **v2rayN** – «Группа подписки» → «Настройки группы подписки» → добавить URL → обновить → проверить задержку → выбрать сервер → включить «Режим TUN». В настройках маршрутизации выберите «RUv1‑Все, кроме РФ».
+- **Nekoray** – «Настройки» → «Группы» → «Новая группа» → «Подписка» → вставить URL → обновить → проверить задержку → подключиться.
+- **Hiddify (Desktop)** – «+» → «Добавить подписку» → вставить URL → добавить → обновить → проверить задержку → подключиться.
+
+> **Важно:** всегда используйте проверку «реальной задержки», чтобы выбрать действительно работающий сервер.
+
+---
+
+## 📌 Полезные ссылки
+
+- **Оригинальный репозиторий с серверами:** [github.com/igareck/vpn-configs-for-russia](https://github.com/igareck/vpn-configs-for-russia)
+- **Список публичных DoH‑серверов** (для шифрования DNS):
+  - Cloudflare: `https://dns.cloudflare.com/dns-query`
+  - Google: `https://dns.google/dns-query`
+  - AdGuard: `https://dns.adguard-dns.com/dns-query`
+  - Quad9: `https://dns.quad9.net/dns-query`
+- **Безопасные браузеры:** [Librewolf](https://librewolf.net/), [Ungoogled Chromium](https://github.com/ungoogled-software), [Cromite](https://github.com/uazo/cromite)
+- **Статья об уязвимости на Habr:** [ссылка](https://habr.com/ru/articles/1020080/) (зеркало в архиве)
+
+---
+
+## ⚠️ Дисклеймер
+
+> *Автор не является владельцем или поставщиком VPN‑конфигураций. Это независимый информационный обзор и результаты тестирования. Материал предназначен исключительно для граждан стран, где такая информация легальна. Используйте VPN только в законных целях (например, для защиты приватности). Ответственность за использование лежит на пользователе. Автор не поощряет противоправное применение.*
