@@ -15,7 +15,7 @@
 
 ---
 
-# <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2RkeXZzdDl1Y3g4dW1xcjFxc2xsMHVsZ2RiY243OHJodjd0cHQ1NSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/qXp82ZL3eZbbTUrLyy/giphy.gif" width="45"> Бесплатные VPN‑конфигурации, работающие в РФ
+# <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2RkeXZzdDl1Y3g4dW1xcjFxc2xsMHVsZ2RiY243OHJodjd0cHQ1NSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/qXp82ZL3eZbbTUrLyy/giphy.gif" width="45"> Бесплатная VPN Подписка Для РФ
 
 **FUCK‑RKN‑VPN** – моя собственная подписка на основе бесплатных серверов из репозитория [igareck/vpn‑configs‑for‑russia](https://github.com/igareck/vpn-configs-for-russia).  
 
