@@ -5,6 +5,9 @@ on:
     - cron: '*/15 * * * *'   # каждые 15 минут
   workflow_dispatch:          # ручной запуск
 
+permissions:
+  contents: write            # разрешаем запись в репозиторий
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,9 +26,10 @@ jobs:
       - name: Run update script
         run: python scripts/update_sub.py
 
-      - name: Commit and push if changed
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add output/
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update subscription $(date -u +%Y-%m-%dT%H:%M:%SZ)" && git push)
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Auto-update subscription
+          commit_user_name: github-actions[bot]
+          commit_user_email: github-actions[bot]@users.noreply.github.com
+          file_pattern: output/*
