@@ -1,13 +1,14 @@
 <!-- Language Switcher -->
 <div align="center">
-  <a href="README-ru.md"><img src="https://img.shields.io/badge/Русский-README--ru.md-blue?style=for-the-badge&logo=googletranslate&logoColor=white" alt="Russian"></a>
+  <a href="README.md"><img src="https://img.shields.io/badge/Русский-README.md-blue?style=for-the-badge&logo=googletranslate&logoColor=white" alt="Russian"></a>
   <a href="README-en.md"><img src="https://img.shields.io/badge/English-README--en.md-red?style=for-the-badge&logo=googletranslate&logoColor=white" alt="English"></a>
 </div>
 
 <br>
 
 <div align="center">
-  <img src="https://i.imgur.com/OrVp5Rx.jpeg" alt="Star Sky" width="600"/>
+  <!-- Replace with your own image if needed -->
+  <img src="https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Star Sky" width="600"/>
   <h1>🌟 FUCK-RKN-VPN 🌟</h1>
   <p><strong>Bypass censorship together 🚀</strong></p>
   <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNTljeGk4d3lzZnU3Mm1peDBienFpbmEyb3JmaDB5N21tMW9oczIwdyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/8p1WPEOeDWFCksfe18/giphy.gif" width="150" alt="NyaCat"/>
@@ -26,19 +27,12 @@ All configs are public, auto‑updated, and automatically tested for usability.
 
 ## 📦 Subscriptions
 
-### ⚫ Blacklist (standard internet)
 | Version | File | RAW Link |
 |---------|------|----------|
-| **Mobile** (Top‑150, mix of protocols) | `BLACK_VLESS_RUS_mobile.txt` | [Download](https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/BLACK_VLESS_RUS_mobile.txt) |
-| **PC** (full VLESS) | `BLACK_VLESS_RUS.txt` | [Download](https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/BLACK_VLESS_RUS.txt) |
+| **Mobile** (Top‑150, mix of protocols) | `mobile.txt` | (https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/output/mobile.txt) |
+| **PC** (full list) | `pc.txt` | (https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/output/pc.txt) |
 
-### ⚪ Whitelist (strict CIDR restrictions)
-| Version | File | RAW Link |
-|---------|------|----------|
-| **Mobile** (Top‑150 CIDR) | `Vless-Reality-White-Lists-Rus-Mobile.txt` | [Download](https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/Vless-Reality-White-Lists-Rus-Mobile.txt) |
-| **PC** (full CIDR list) | `WHITE-CIDR-RU-all.txt` | [Download](https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/WHITE-CIDR-RU-all.txt) |
-
-> All configs are taken from the original repository and are regularly tested.  
+> All configs are taken from the original repository and are updated based on updates to the original files.  
 > Subscriptions update automatically **every hour** – just enable auto‑update in your client.
 
 ---
