@@ -2,11 +2,11 @@ name: Update VPN subscription
 
 on:
   schedule:
-    - cron: '*/60 * * * *'   # каждые 60 минут
-  workflow_dispatch:          # ручной запуск
+    - cron: '0 * * * *'
+  workflow_dispatch:
 
 permissions:
-  contents: write            # разрешаем запись в репозиторий
+  contents: write
 
 jobs:
   build:
