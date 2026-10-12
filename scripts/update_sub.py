@@ -14,7 +14,16 @@ SOURCES = [
     "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/BLACK_VLESS_RUS_mobile.txt",
     "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/BLACK_VLESS_RUS.txt",
     "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/BLACK_SS_WEAK_DPI_RUS.txt",
-    "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/BLACK_SS%2BAll_RUS.txt"
+    "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/BLACK_SS%2BAll_RUS.txt",
+    "https://raw.githubusercontent.com/ninjastrikers/Nexus-nodes/main/configs/all.txt",
+    "https://raw.githubusercontent.com/barry-far/V2ray-Configs/main/All_Configs_Sub.txt",
+    "https://raw.githubusercontent.com/mahdibland/V2RayAggregator/master/sub/sub_merge.txt",
+    "https://raw.githubusercontent.com/mohammadaz2/v2rayConfigsForYou/main/configs.txt",
+    "https://raw.githubusercontent.com/miladtahanian/Config-Collector/main/mixed_iran.txt",
+    "https://raw.githubusercontent.com/r3zarahimi/tg-v2ray-configs-every2h/main/Config_jo.txt",
+    "https://raw.githubusercontent.com/MahanKenway/Freedom-V2Ray/main/configs/mix_sub.txt",
+    "https://raw.githubusercontent.com/wlunlocker/vpn-configs/main/whitelist_all.txt",
+    "https://raw.githubusercontent.com/4n0nymou3/multi-proxy-config-fetcher/refs/heads/main/configs/proxy_configs.txt"
 ]
 
 OUTPUT_DIR = Path("output")
@@ -117,7 +126,14 @@ def fetch_links(url):
     try:
         resp = requests.get(url, timeout=15)
         resp.raise_for_status()
-        return resp.text
+        text = resp.text.strip()
+        try:
+            decoded = base64.b64decode(text).decode('utf-8', errors='ignore')
+            if any(decoded.startswith(p) for p in ['vless://', 'vmess://', 'ss://', 'trojan://', 'hysteria2://', 'hy2://']):
+                return decoded
+        except Exception:
+            pass
+        return text
     except Exception as e:
         print(f"Error fetching {url}: {e}")
         return ""
@@ -172,8 +188,8 @@ def get_display_name(uri):
         return f"{flag} {clean_name}".strip() if clean_name else "Server"
     return "Server"
 
-def process_uris(uris):
-    print(f"Checking {len(uris)} servers...")
+def process_uris(uris, source_name):
+    print(f"Checking {len(uris)} servers from {source_name}...")
     alive_uris = []
     
     with ThreadPoolExecutor(max_workers=50) as executor:
@@ -183,14 +199,33 @@ def process_uris(uris):
             if future.result():
                 alive_uris.append(uri)
                 
-    print(f"Found {len(alive_uris)} alive servers.")
+    print(f"Found {len(alive_uris)} alive servers from {source_name}.")
+    return alive_uris
+
+def main():
+    all_uris = []
     
-    alive_uris.sort(key=get_display_name)
+    for url in SOURCES:
+        source_name = url.split('/')[-1]
+        text = fetch_links(url)
+        if not text:
+            continue
+        uris = extract_uris(text)
+        uris = list(set(uris))
+        if not uris:
+            continue
+        alive = process_uris(uris, source_name)
+        all_uris.extend(alive)
+        
+    all_uris = list(dict.fromkeys(all_uris))
+    print(f"Total unique alive servers: {len(all_uris)}")
+    
+    all_uris.sort(key=get_display_name)
     
     renamed = []
     name_counters = {}
     
-    for uri in alive_uris:
+    for uri in all_uris:
         display_name = get_display_name(uri)
         name_counters[display_name] = name_counters.get(display_name, 0) + 1
         num = name_counters[display_name]
@@ -202,35 +237,21 @@ def process_uris(uris):
             renamed.append(f"{base}#{new_name}")
         else:
             renamed.append(f"{uri}#{new_name}")
-            
-    return renamed
-
-def main():
-    all_uris = []
-    
-    for url in SOURCES:
-        text = fetch_links(url)
-        uris = extract_uris(text)
-        uris = list(set(uris))
-        processed = process_uris(uris)
-        all_uris.extend(processed)
-        
-    all_uris = list(dict.fromkeys(all_uris))
     
     instruction = "vless://00000000-0000-0000-0000-000000000000@127.0.0.1:1#⚠️_IF_PING_DOES_NOT_SHOW,_JUST_CONNECT!"
-    all_uris.insert(0, instruction)
+    renamed.insert(0, instruction)
     
     headers = [
         "#profile-title: FUCK-RKN-VPN",
         "#profile-update-interval: 6"
     ]
     
-    combined_text = "\n".join(headers + all_uris)
+    combined_text = "\n".join(headers + renamed)
     b64_encoded = base64.b64encode(combined_text.encode('utf-8')).decode('utf-8')
     
     output_file = OUTPUT_DIR / "FUCK-RKN-VPN.txt"
     output_file.write_text(b64_encoded)
-    print(f"Successfully saved {len(all_uris)-1} servers to {output_file}")
+    print(f"Successfully saved {len(renamed)-1} servers to {output_file}")
 
 if __name__ == "__main__":
     main()
