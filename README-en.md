@@ -14,24 +14,23 @@
 
 ---
 
-# <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2RkeXZzdDl1Y3g4dW1xcjFxc2xsMHVsZ2RiY243OHJodjd0cHQ1NSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/qXp82ZL3eZbbTUrLyy/giphy.gif" width="45"> Free VPN subscription for Russia
+# <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2RkeXZzdDl1Y3g4dW1xcjFxc2xsMHVsZ2RiY243OHJodjd0cHQ1NSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/qXp82ZL3eZbbTUrLyy/giphy.gif" width="45"> Free VPN Subscription for Russia
 
-**FUCK‑RKN‑VPN** – my own subscription based on free servers from the repository [igareck/vpn‑configs‑for‑russia](https://github.com/igareck/vpn-configs-for-russia).  Author: igareck
+**FUCK‑RKN‑VPN** – my own subscription based on free servers from the repository [igareck/vpn‑configs‑for‑russia](https://github.com/igareck/vpn-configs-for-russia). Author: igareck
 
 All configs are public, auto‑updated, and automatically tested for usability.  
-**Subscriptions are refreshed every hour** – you always have the latest list of working servers without junk.
+The subscription is refreshed every hour – you always have the latest list of working servers without junk.
 
 ---
 
-## 📦 Subscriptions
+## 📦 Subscription
 
 | Version | File | RAW Link |
 |---------|------|----------|
-| **Mobile** (Top‑150, mix of protocols) | `mobile.txt` | (https://raw.githubusercontent.com/Chychelo-WIN/FUCK-RKN-VPN/main/output/mobile.txt) |
-| **PC** (full list) | `pc.txt` | (https://raw.githubusercontent.com/Chychelo-WIN/FUCK-RKN-VPN/main/output/pc.txt) |
+| **FUCK-RKN-VPN** (single subscription) | `FUCK-RKN-VPN.txt` | https://raw.githubusercontent.com/Chychelo-WIN/FUCK-RKN-VPN/main/output/FUCK-RKN-VPN.txt |
 
-> All configs are taken from the original repository Dependencies are updated based on when the original files are updated.  
-> Subscriptions update automatically **every hour** – just enable auto‑update in your client.
+> All configs are taken from the original repository and are updated depending on when the original files are updated.  
+> The subscription updates automatically **every hour** – just enable auto‑update in your client.
 
 ---
 
@@ -53,7 +52,7 @@ Recommended secure clients (with local proxy auth):
 ## 🧩 Client Setup Instructions
 
 General steps for all clients:
-1. Copy the RAW link of the desired subscription (from the table above).
+1. Copy the RAW link of the subscription (from the table above).
 2. In your client, add a new subscription (usually "Add Profile" → "Subscription").
 3. Paste the link, set a name, and set update interval to **1 hour**.
 4. Refresh the subscription and run a "real delay" test (not TCP/ICMP Ping).
@@ -78,7 +77,7 @@ General steps for all clients:
 - **Nekoray** – "Settings" → "Groups" → "New Group" → "Subscription" → paste URL → refresh → test latency → connect.
 - **Hiddify (Desktop)** – "+" → "Add subscription" → paste URL → add → refresh → test latency → connect.
 
-> Always use the "real delay" test to pick a truly working server.
+> **Important:** always use the "real delay" test to pick a truly working server.
 
 ---
 
@@ -98,7 +97,7 @@ General steps for all clients:
 ## 📜 License
 
 This project is licensed under the **GNU General Public License v3.0**.  
-For full details, see or visit the official site: [https://www.gnu.org/licenses/gpl-3.0.html](https://www.gnu.org/licenses/gpl-3.0.html).
+For full details, see the official site: [https://www.gnu.org/licenses/gpl-3.0.html](https://www.gnu.org/licenses/gpl-3.0.html).
 
 In short: you are free to use, modify, and distribute this code as long as all derivative works are also distributed under the same license with proper attribution.
 
