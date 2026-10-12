@@ -31,6 +31,10 @@ OUTPUT_DIR.mkdir(exist_ok=True)
 
 FLAG_REGEX = re.compile(r'[\U0001F1E6-\U0001F1FF]{2}')
 
+UDP_PROTOCOLS = ('hysteria2://', 'hy2://', 'tuic://')
+
+TCP_PROTOCOLS = ('vless://', 'vmess://', 'ss://', 'trojan://')
+
 COUNTRY_MAP = {
     "россия": "Russia", "russia": "Russia", "рф": "Russia", "russian": "Russia",
     "украина": "Ukraine", "ukraine": "Ukraine", "ua": "Ukraine",
@@ -129,7 +133,7 @@ def fetch_links(url):
         text = resp.text.strip()
         try:
             decoded = base64.b64decode(text).decode('utf-8', errors='ignore')
-            if any(decoded.startswith(p) for p in ['vless://', 'vmess://', 'ss://', 'trojan://', 'hysteria2://', 'hy2://']):
+            if any(decoded.startswith(p) for p in ['vless://', 'vmess://', 'ss://', 'trojan://', 'hysteria2://', 'hy2://', 'tuic://']):
                 return decoded
         except Exception:
             pass
@@ -144,24 +148,21 @@ def extract_uris(text):
         line = line.strip()
         if not line or line.startswith('#'):
             continue
-        if any(line.startswith(p) for p in ['vless://', 'vmess://', 'ss://', 'hysteria2://', 'hy2://', 'trojan://']):
+        if any(line.startswith(p) for p in TCP_PROTOCOLS + UDP_PROTOCOLS):
             uris.append(line)
     return uris
 
 def is_alive(uri):
+    if uri.startswith(UDP_PROTOCOLS):
+        return True
     try:
         parsed = urlparse(uri)
         host = parsed.hostname
         port = parsed.port
         if not host or not port:
             return False
-        for _ in range(2):
-            try:
-                with socket.create_connection((host, int(port)), timeout=5.0):
-                    return True
-            except Exception:
-                continue
-        return False
+        with socket.create_connection((host, int(port)), timeout=7.0):
+            return True
     except Exception:
         return False
 
