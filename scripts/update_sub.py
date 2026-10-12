@@ -6,14 +6,19 @@ from urllib.parse import urlparse, unquote
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-SOURCES = {
-    "Blacklist": "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/BLACK_VLESS_RUS.txt",
-    "Whitelist": "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/WHITE-CIDR-RU-all.txt"
-}
+SOURCES = [
+    "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/WHITE-SNI-RU-all.txt",
+    "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/WHITE-CIDR-RU-checked.txt",
+    "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/WHITE-CIDR-RU-all.txt",
+    "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/Vless-Reality-White-Lists-Rus-Mobile.txt",
+    "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/BLACK_VLESS_RUS_mobile.txt",
+    "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/BLACK_VLESS_RUS.txt",
+    "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/BLACK_SS_WEAK_DPI_RUS.txt",
+    "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/BLACK_SS%2BAll_RUS.txt"
+]
 
 OUTPUT_DIR = Path("output")
 OUTPUT_DIR.mkdir(exist_ok=True)
-MAX_SERVERS_PER_LIST = 20
 
 FLAG_REGEX = re.compile(r'[\U0001F1E6-\U0001F1FF]{2}')
 
@@ -88,6 +93,26 @@ COUNTRY_MAP = {
     "новая зеландия": "New Zealand", "new zealand": "New Zealand", "nz": "New Zealand",
 }
 
+COUNTRY_FLAGS = {
+    "Russia": "🇷🇺", "Ukraine": "🇺🇦", "Belarus": "🇧🇾", "Kazakhstan": "🇰🇿",
+    "Uzbekistan": "🇺🇿", "Georgia": "🇬🇪", "Armenia": "🇦🇲", "Azerbaijan": "🇦🇿",
+    "Moldova": "🇲🇩", "Estonia": "🇪🇪", "Latvia": "🇱🇻", "Lithuania": "🇱🇹",
+    "Germany": "🇩🇪", "Finland": "🇫🇮", "Netherlands": "🇳🇱", "France": "🇫🇷",
+    "UK": "🇬🇧", "Sweden": "🇸🇪", "Norway": "🇳🇴", "Poland": "🇵🇱",
+    "Italy": "🇮🇹", "Spain": "🇪🇸", "Portugal": "🇵🇹", "Switzerland": "🇨🇭",
+    "Austria": "🇦🇹", "Belgium": "🇧🇪", "Denmark": "🇩🇰", "Czechia": "🇨🇿",
+    "Romania": "🇷🇴", "Bulgaria": "🇧🇬", "Greece": "🇬🇷", "Hungary": "🇭🇺",
+    "Ireland": "🇮🇪", "Iceland": "🇮🇸", "Serbia": "🇷🇸", "Croatia": "🇭🇷",
+    "Slovenia": "🇸🇮", "Slovakia": "🇸🇰", "Albania": "🇦🇱", "Cyprus": "🇨🇾",
+    "Malta": "🇲🇹", "Luxembourg": "🇱🇺", "USA": "🇺🇸", "Canada": "🇨🇦",
+    "Brazil": "🇧🇷", "Mexico": "🇲🇽", "Argentina": "🇦🇷", "Chile": "🇨🇱",
+    "Colombia": "🇨🇴", "Peru": "🇵🇪", "Turkey": "🇹🇷", "Japan": "🇯🇵",
+    "South Korea": "🇰🇷", "China": "🇨🇳", "India": "🇮🇳", "Vietnam": "🇻🇳",
+    "Thailand": "🇹🇭", "Indonesia": "🇮🇩", "Malaysia": "🇲🇾", "Singapore": "🇸🇬",
+    "Philippines": "🇵🇭", "Israel": "🇮🇱", "UAE": "🇦🇪", "Saudi Arabia": "🇸🇦",
+    "Egypt": "🇪🇬", "South Africa": "🇿🇦", "Australia": "🇦🇺", "New Zealand": "🇳🇿"
+}
+
 def fetch_links(url):
     try:
         resp = requests.get(url, timeout=15)
@@ -114,8 +139,13 @@ def is_alive(uri):
         port = parsed.port
         if not host or not port:
             return False
-        with socket.create_connection((host, int(port)), timeout=2.5):
-            return True
+        for _ in range(2):
+            try:
+                with socket.create_connection((host, int(port)), timeout=5.0):
+                    return True
+            except Exception:
+                continue
+        return False
     except Exception:
         return False
 
@@ -135,38 +165,37 @@ def get_display_name(uri):
         
         for key, country_name in COUNTRY_MAP.items():
             if key in name_lower:
-                return f"{flag} {country_name}".strip()
+                correct_flag = COUNTRY_FLAGS.get(country_name, flag)
+                return f"{correct_flag} {country_name}".strip()
                 
         clean_name = re.sub(r'[^\w\s-]', '', raw_name_clean).strip()
         return f"{flag} {clean_name}".strip() if clean_name else "Server"
     return "Server"
 
-def process_uris(uris, list_type):
-    print(f"Checking {len(uris)} {list_type} servers...")
+def process_uris(uris):
+    print(f"Checking {len(uris)} servers...")
     alive_uris = []
     
-    with ThreadPoolExecutor(max_workers=20) as executor:
+    with ThreadPoolExecutor(max_workers=50) as executor:
         future_to_uri = {executor.submit(is_alive, uri): uri for uri in uris}
         for future in as_completed(future_to_uri):
             uri = future_to_uri[future]
             if future.result():
                 alive_uris.append(uri)
                 
-    print(f"Found {len(alive_uris)} alive {list_type} servers.")
+    print(f"Found {len(alive_uris)} alive servers.")
     
     alive_uris.sort(key=get_display_name)
     
-    selected = alive_uris[:MAX_SERVERS_PER_LIST]
     renamed = []
-    
     name_counters = {}
     
-    for uri in selected:
+    for uri in alive_uris:
         display_name = get_display_name(uri)
         name_counters[display_name] = name_counters.get(display_name, 0) + 1
         num = name_counters[display_name]
         
-        new_name = f"{display_name} | {list_type} #{num}"
+        new_name = f"{display_name} #{num}"
         
         if '#' in uri:
             base, _ = uri.rsplit('#', 1)
@@ -179,13 +208,15 @@ def process_uris(uris, list_type):
 def main():
     all_uris = []
     
-    for list_type, url in SOURCES.items():
+    for url in SOURCES:
         text = fetch_links(url)
         uris = extract_uris(text)
         uris = list(set(uris))
-        processed = process_uris(uris, list_type)
+        processed = process_uris(uris)
         all_uris.extend(processed)
         
+    all_uris = list(dict.fromkeys(all_uris))
+    
     instruction = "vless://00000000-0000-0000-0000-000000000000@127.0.0.1:1#⚠️_IF_PING_DOES_NOT_SHOW,_JUST_CONNECT!"
     all_uris.insert(0, instruction)
     
@@ -202,5 +233,4 @@ def main():
     print(f"Successfully saved {len(all_uris)-1} servers to {output_file}")
 
 if __name__ == "__main__":
-    main()
     main()
